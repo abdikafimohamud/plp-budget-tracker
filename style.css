@@ -406,3 +406,63 @@ footer p {
         height: 300px;
     }
 }
+/* =========================================
+   MOBILE RESPONSIVE DESIGN
+   Screens smaller than 600px
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    /* Stack form controls vertically */
+    #add-expense form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #add-expense form input,
+    #add-expense form select,
+    #add-expense form button {
+        width: 100%;
+    }
+
+    /* Make table easier to view on small screens */
+    .expenses {
+        overflow-x: auto;
+    }
+
+    .expenses table {
+        width: 100%;
+    }
+
+    .expenses th,
+    .expenses td {
+        display: block;
+        width: 100%;
+    }
+
+    /* Keep table headers and rows stacked */
+    .expenses thead tr,
+    .expenses tbody tr {
+        display: block;
+        width: 100%;
+    }
+
+    .expenses thead th {
+        text-align: left;
+    }
+
+    /* Add spacing between expense rows */
+    .expenses tbody tr {
+        margin-bottom: 15px;
+        border: 1px solid #999;
+    }
+
+    .expenses tbody td {
+        border: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .expenses tbody td:last-child {
+        border-bottom: none;
+    }
+}
