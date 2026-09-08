@@ -1,24 +1,408 @@
-/* Expense table */
+/* =========================================
+   GENERAL PAGE STYLING
+   ========================================= */
+
+/* Universal selector */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f7f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+header {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+header h1 {
+    margin: 10px 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 0;
+    font-size: 18px;
+}
+
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+nav {
+    background-color: #1b5e20;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+/* Advanced pseudo-class: :hover */
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+   ========================================= */
+
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   ADD EXPENSE SECTION
+   ========================================= */
+
+#add-expense {
+    background-color: #f0f0f0;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+#add-expense h2 {
+    margin-top: 0;
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+/* Element selector */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+/*
+   ADVANCED SELECTOR #1
+   DESCENDANT SELECTOR
+
+   Selects input and select elements
+   that are inside the form.
+*/
+
+form input,
+form select {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+/*
+   ADVANCED SELECTOR #2
+   :focus pseudo-class
+
+   Changes the input when the user
+   clicks inside it.
+*/
+
+input:focus {
+    outline: 3px solid #81c784;
+    border-color: #2e7d32;
+    background-color: #f1f8e9;
+}
+
+
+/*
+   Also apply focus styling to dropdown.
+*/
+
+select:focus {
+    outline: 3px solid #81c784;
+    border-color: #2e7d32;
+}
+
+
+/*
+   ADVANCED SELECTOR #3
+   :required pseudo-class
+*/
+
+input:required,
+select:required {
+    border-left: 4px solid #4caf50;
+}
+
+
+/*
+   ADVANCED SELECTOR #4
+   :not() pseudo-class
+
+   Targets inputs that are not disabled.
+*/
+
+input:not(:disabled) {
+    background-color: white;
+}
+
+
+/* =========================================
+   BUTTON
+   ========================================= */
+
+button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+
+    background-color: #2e7d32;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 16px;
+
+    /*
+       REQUIRED BY ASSIGNMENT
+       Shows the hand cursor.
+    */
+    cursor: pointer;
+}
+
+
+/*
+   Button hover effect
+*/
+
+button:hover {
+    background-color: #1b5e20;
+}
+
+
+/*
+   Button active state
+*/
+
+button:active {
+    transform: scale(0.98);
+}
+
+
+/* =========================================
+   EXPENSES SECTION
+   ========================================= */
+
+.expenses {
+    background-color: #e8f5e9;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.expenses h2 {
+    margin-top: 0;
+}
+
+
+/* =========================================
+   EXPENSE TABLE
+   ========================================= */
 
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: white;
 }
 
-th,
-td {
+
+/*
+   DESCENDANT SELECTOR
+
+   Targets th and td inside
+   the .expenses section.
+*/
+
+.expenses th,
+.expenses td {
     border: 1px solid #999;
-    padding: 10px;
+    padding: 12px;
     text-align: left;
 }
 
-th {
-    background-color: #4caf50;
+
+/*
+   Table header
+*/
+
+.expenses th {
+    background-color: #2e7d32;
     color: white;
+    font-weight: bold;
 }
 
-/* Alternating row colors */
 
-tr:nth-child(even) {
+/*
+   ADVANCED SELECTOR
+   :nth-child(even)
+
+   Alternating row colors.
+*/
+
+.expenses tbody tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+
+
+/*
+   REQUIRED BY ASSIGNMENT
+   TABLE ROW HOVER
+
+   Changes the row background when
+   the mouse moves over it.
+*/
+
+.expenses tbody tr:hover {
+    background-color: #c8e6c9;
+    cursor: pointer;
+}
+
+
+/*
+   ADVANCED SELECTOR
+   :first-child
+
+   Styles the first expense row.
+*/
+
+.expenses tbody tr:first-child {
+    font-weight: bold;
+}
+
+
+/* =========================================
+   DETAILS / SUMMARY
+   ========================================= */
+
+#how-to-use {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #2e7d32;
+}
+
+summary {
+    font-weight: bold;
+    font-size: 18px;
+
+    /* Interactive cursor */
+    cursor: pointer;
+}
+
+summary:hover {
+    color: #2e7d32;
+}
+
+
+/* =========================================
+   VIDEO / MULTIMEDIA
+   ========================================= */
+
+#budget-video {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#budget-video h2 {
+    margin-top: 0;
+}
+
+#budget-video iframe {
+    max-width: 100%;
+    border: none;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    background-color: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    nav a {
+        display: block;
+        margin: 8px 0;
+    }
+
+    .expenses {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 650px;
+    }
+
+    #budget-video iframe {
+        width: 100%;
+        height: 300px;
+    }
 }
