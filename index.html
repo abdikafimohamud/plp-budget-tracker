@@ -12,37 +12,201 @@
 
 <body>
 
-    <h1>Personal Budget & Expense Tracker</h1>
-    <p>Track your income and expenses in one place.</p>
+    <!-- Header -->
+    <header>
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png"
+            alt="Budget tracker logo"
+            width="80"
+        >
 
-    <section id="add-expense">
+        <h1>Personal Budget & Expense Tracker</h1>
 
-        <h2>Add Expense</h2>
+        <p>Track your income and expenses in one place.</p>
+    </header>
 
-        <form>
 
-            <label for="expense-name">Expense Name</label>
-            <input type="text" id="expense-name" placeholder="Enter expense name">
+    <!-- Navigation -->
+    <nav>
+        <a href="#add-expense">Add Expense</a>
+        <a href="#expenses">Your Expenses</a>
+        <a href="#budget-video">Budgeting Tips</a>
+        <a href="#how-to-use">How to Use</a>
+    </nav>
 
-            <label for="amount">Amount</label>
-            <input type="number" id="amount" placeholder="Enter amount">
 
-            <label for="category">Category</label>
-            <input type="text" id="category" placeholder="Enter category">
+    <!-- Main Content -->
+    <main>
 
-            <button type="submit">Add Expense</button>
+        <!-- Add Expense Section -->
+        <section id="add-expense">
 
-        </form>
+            <h2>Add Expense</h2>
 
-    </section>
+            <form>
 
-    <section class="expenses">
+                <label for="expense-name">Expense Name</label>
+                <input
+                    type="text"
+                    id="expense-name"
+                    name="expense-name"
+                    placeholder="Enter expense name"
+                    required
+                >
 
-        <h2>Your Expenses</h2>
+                <label for="expense-amount">Amount</label>
+                <input
+                    type="number"
+                    id="expense-amount"
+                    name="expense-amount"
+                    placeholder="Enter amount"
+                    min="0"
+                    step="0.01"
+                    required
+                >
 
-        <p>No expenses yet</p>
+                <label for="expense-category">Category</label>
 
-    </section>
+                <select
+                    id="expense-category"
+                    name="expense-category"
+                    required
+                >
+                    <option value="">Select a category</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="rent">Rent</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="expense-date">Date</label>
+                <input
+                    type="date"
+                    id="expense-date"
+                    name="expense-date"
+                    required
+                >
+
+                <button type="button">Add Expense</button>
+
+            </form>
+
+        </section>
+
+
+        <!-- Expenses Table Section -->
+        <section class="expenses" id="expenses">
+
+            <h2>Your Expenses</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Groceries</td>
+                        <td>$50.00</td>
+                        <td>Food</td>
+                        <td>2026-09-01</td>
+                    </tr>
+
+                    <tr>
+                        <td>Bus Fare</td>
+                        <td>$10.00</td>
+                        <td>Transport</td>
+                        <td>2026-09-02</td>
+                    </tr>
+
+                    <tr>
+                        <td>House Rent</td>
+                        <td>$300.00</td>
+                        <td>Rent</td>
+                        <td>2026-09-03</td>
+                    </tr>
+
+                    <tr>
+                        <td>Movie Ticket</td>
+                        <td>$15.00</td>
+                        <td>Entertainment</td>
+                        <td>2026-09-04</td>
+                    </tr>
+
+                    <tr>
+                        <td>Notebook</td>
+                        <td>$8.00</td>
+                        <td>Other</td>
+                        <td>2026-09-05</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- How To Use Section -->
+        <section id="how-to-use">
+
+            <details>
+
+                <summary>How to use this tracker</summary>
+
+                <p>
+                    Enter the name of your expense, the amount you spent,
+                    select a category, and choose the date of the expense.
+                </p>
+
+                <p>
+                    Click the "Add Expense" button to add an expense.
+                    JavaScript functionality will be added in a later week.
+                </p>
+
+            </details>
+
+        </section>
+
+
+        <!-- Multimedia Section -->
+        <section id="budget-video">
+
+            <h2>Budgeting Tips</h2>
+
+            <p>
+                Watch this video to learn more about managing your personal budget.
+            </p>
+
+            <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/QThz1B8SHmc"
+                title="How To Manage Your Money Like The 1%"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>&copy; 2026 Personal Budget & Expense Tracker</p>
+
+    </footer>
 
 </body>
 
