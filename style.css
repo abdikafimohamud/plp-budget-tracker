@@ -1,30 +1,63 @@
 /* =========================================
+   COLOR PALETTE & DESIGN TOKENS
+   ========================================= */
+
+:root {
+    /* Colors */
+    --color-primary: #2e7d32;
+    --color-primary-dark: #1b5e20;
+    --color-primary-light: #81c784;
+    --color-primary-pale: #e8f5e9;
+    --color-accent-row: #c8e6c9;
+    --color-warning: #d32f2f;
+
+    --color-text: #333333;
+    --color-text-light: #6b6b6b;
+    --color-bg: #f4f6f5;
+    --color-white: #ffffff;
+    --color-border: #dddddd;
+
+    /* Typography */
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', Arial, sans-serif;
+
+    /* Spacing & shape */
+    --radius: 10px;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================
    GENERAL PAGE STYLING
    ========================================= */
 
-/* Universal selector */
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f7f8;
-    color: #333;
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     line-height: 1.6;
 }
 
 
 /* =========================================
-   HEADER
+   HEADER (styled as a card)
    ========================================= */
 
 header {
-    background-color: #2e7d32;
-    color: white;
+    background-color: var(--color-primary);
+    color: var(--color-white);
     text-align: center;
     padding: 30px 20px;
+
+    max-width: 1100px;
+    margin: 30px auto 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 header img {
@@ -34,7 +67,10 @@ header img {
 
 header h1 {
     margin: 10px 0;
+    font-family: var(--font-heading);
+    font-weight: 700;
     font-size: 32px;
+    letter-spacing: 0.5px;
 }
 
 header p {
@@ -48,19 +84,24 @@ header p {
    ========================================= */
 
 nav {
-    background-color: #1b5e20;
+    background-color: var(--color-primary-dark);
     padding: 15px;
     text-align: center;
+
+    max-width: 1100px;
+    margin: 12px auto 0;
+    border-radius: var(--radius);
 }
 
 nav a {
-    color: white;
+    color: var(--color-white);
     text-decoration: none;
     margin: 0 15px;
-    font-weight: bold;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.3px;
 }
 
-/* Advanced pseudo-class: :hover */
 nav a:hover {
     text-decoration: underline;
 }
@@ -80,19 +121,23 @@ section {
     margin-bottom: 30px;
 }
 
+h2 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-top: 0;
+}
+
 
 /* =========================================
-   ADD EXPENSE SECTION
+   ADD EXPENSE SECTION (card)
    ========================================= */
 
 #add-expense {
-    background-color: #f0f0f0;
+    background-color: var(--color-primary-pale);
     padding: 25px;
-    border-radius: 8px;
-}
-
-#add-expense h2 {
-    margin-top: 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 
@@ -101,27 +146,17 @@ section {
    ========================================= */
 
 form {
-    background-color: white;
+    background-color: var(--color-white);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: var(--radius);
 }
 
-
-/* Element selector */
 label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
+    font-weight: 600;
+    font-family: var(--font-body);
 }
-
-
-/*
-   ADVANCED SELECTOR #1
-   DESCENDANT SELECTOR
-
-   Selects input and select elements
-   that are inside the form.
-*/
 
 form input,
 form select {
@@ -130,56 +165,29 @@ form select {
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #aaa;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 16px;
+    font-family: var(--font-body);
 }
 
-
-/*
-   ADVANCED SELECTOR #2
-   :focus pseudo-class
-
-   Changes the input when the user
-   clicks inside it.
-*/
-
 input:focus {
-    outline: 3px solid #81c784;
-    border-color: #2e7d32;
+    outline: 3px solid var(--color-primary-light);
+    border-color: var(--color-primary);
     background-color: #f1f8e9;
 }
 
-
-/*
-   Also apply focus styling to dropdown.
-*/
-
 select:focus {
-    outline: 3px solid #81c784;
-    border-color: #2e7d32;
+    outline: 3px solid var(--color-primary-light);
+    border-color: var(--color-primary);
 }
-
-
-/*
-   ADVANCED SELECTOR #3
-   :required pseudo-class
-*/
 
 input:required,
 select:required {
-    border-left: 4px solid #4caf50;
+    border-left: 4px solid var(--color-primary-light);
 }
 
-
-/*
-   ADVANCED SELECTOR #4
-   :not() pseudo-class
-
-   Targets inputs that are not disabled.
-*/
-
 input:not(:disabled) {
-    background-color: white;
+    background-color: var(--color-white);
 }
 
 
@@ -190,36 +198,26 @@ input:not(:disabled) {
 button {
     display: block;
     margin-top: 10px;
-    padding: 10px 20px;
+    padding: 12px 22px;
 
-    background-color: #2e7d32;
-    color: white;
+    background-color: var(--color-primary);
+    color: var(--color-white);
 
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
 
+    font-family: var(--font-heading);
+    font-weight: 600;
     font-size: 16px;
+    letter-spacing: 0.3px;
 
-    /*
-       REQUIRED BY ASSIGNMENT
-       Shows the hand cursor.
-    */
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
-
-
-/*
-   Button hover effect
-*/
 
 button:hover {
-    background-color: #1b5e20;
+    background-color: var(--color-primary-dark);
 }
-
-
-/*
-   Button active state
-*/
 
 button:active {
     transform: scale(0.98);
@@ -227,17 +225,14 @@ button:active {
 
 
 /* =========================================
-   EXPENSES SECTION
+   EXPENSES SECTION (card)
    ========================================= */
 
 .expenses {
-    background-color: #e8f5e9;
+    background-color: var(--color-white);
     padding: 25px;
-    border-radius: 8px;
-}
-
-.expenses h2 {
-    margin-top: 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 
@@ -248,116 +243,79 @@ button:active {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
+    background-color: var(--color-white);
+    font-family: var(--font-body);
 }
-
-
-/*
-   DESCENDANT SELECTOR
-
-   Targets th and td inside
-   the .expenses section.
-*/
 
 .expenses th,
 .expenses td {
-    border: 1px solid #999;
+    border: 1px solid var(--color-border);
     padding: 12px;
     text-align: left;
 }
 
-
-/*
-   Table header
-*/
-
 .expenses th {
-    background-color: #2e7d32;
-    color: white;
-    font-weight: bold;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    letter-spacing: 0.3px;
 }
-
-
-/*
-   ADVANCED SELECTOR
-   :nth-child(even)
-
-   Alternating row colors.
-*/
 
 .expenses tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-
-/*
-   REQUIRED BY ASSIGNMENT
-   TABLE ROW HOVER
-
-   Changes the row background when
-   the mouse moves over it.
-*/
-
 .expenses tbody tr:hover {
-    background-color: #c8e6c9;
+    background-color: var(--color-accent-row);
     cursor: pointer;
 }
 
-
-/*
-   ADVANCED SELECTOR
-   :first-child
-
-   Styles the first expense row.
-*/
-
 .expenses tbody tr:first-child {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 
 /* =========================================
-   DETAILS / SUMMARY
+   DETAILS / SUMMARY (card)
    ========================================= */
 
 #how-to-use {
-    background-color: white;
+    background-color: var(--color-white);
     padding: 20px;
-    border-radius: 8px;
-    border-left: 5px solid #2e7d32;
+    border-radius: var(--radius);
+    border-left: 5px solid var(--color-primary);
+    box-shadow: var(--shadow);
 }
 
 summary {
-    font-weight: bold;
+    font-family: var(--font-heading);
+    font-weight: 600;
     font-size: 18px;
-
-    /* Interactive cursor */
     cursor: pointer;
 }
 
 summary:hover {
-    color: #2e7d32;
+    color: var(--color-primary);
 }
 
 
 /* =========================================
-   VIDEO / MULTIMEDIA
+   VIDEO / MULTIMEDIA (card)
    ========================================= */
 
 #budget-video {
-    background-color: white;
+    background-color: var(--color-white);
     padding: 25px;
-    border-radius: 8px;
+    border-radius: var(--radius);
     text-align: center;
-}
-
-#budget-video h2 {
-    margin-top: 0;
+    box-shadow: var(--shadow);
 }
 
 #budget-video iframe {
     max-width: 100%;
     border: none;
+    border-radius: 6px;
 }
 
 
@@ -366,11 +324,12 @@ summary:hover {
    ========================================= */
 
 footer {
-    background-color: #1b5e20;
-    color: white;
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
     text-align: center;
     padding: 20px;
     margin-top: 30px;
+    font-family: var(--font-body);
 }
 
 footer p {
@@ -406,14 +365,9 @@ footer p {
         height: 300px;
     }
 }
-/* =========================================
-   MOBILE RESPONSIVE DESIGN
-   Screens smaller than 600px
-   ========================================= */
 
 @media (max-width: 600px) {
 
-    /* Stack form controls vertically */
     #add-expense form {
         display: flex;
         flex-direction: column;
@@ -425,7 +379,6 @@ footer p {
         width: 100%;
     }
 
-    /* Make table easier to view on small screens */
     .expenses {
         overflow-x: auto;
     }
@@ -440,7 +393,6 @@ footer p {
         width: 100%;
     }
 
-    /* Keep table headers and rows stacked */
     .expenses thead tr,
     .expenses tbody tr {
         display: block;
@@ -451,15 +403,14 @@ footer p {
         text-align: left;
     }
 
-    /* Add spacing between expense rows */
     .expenses tbody tr {
         margin-bottom: 15px;
-        border: 1px solid #999;
+        border: 1px solid var(--color-border);
     }
 
     .expenses tbody td {
         border: none;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(--color-border);
     }
 
     .expenses tbody td:last-child {
