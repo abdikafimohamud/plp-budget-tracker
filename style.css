@@ -11,6 +11,10 @@
     --color-accent-row: #c8e6c9;
     --color-warning: #d32f2f;
 
+    /* Accent: used for goal/status tags and highlights, distinct from brand green */
+    --color-accent: #f9a825;
+    --color-accent-pale: #fff3d6;
+
     --color-text: #333333;
     --color-text-light: #6b6b6b;
     --color-bg: #f4f6f5;
@@ -45,65 +49,110 @@ body {
 
 
 /* =========================================
-   HEADER (styled as a card)
+   DASHBOARD SHELL (CSS Grid)
    ========================================= */
 
-header {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    text-align: center;
-    padding: 30px 20px;
-
-    max-width: 1100px;
-    margin: 30px auto 0;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-}
-
-header img {
-    display: block;
-    margin: 0 auto 10px;
-}
-
-header h1 {
-    margin: 10px 0;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 32px;
-    letter-spacing: 0.5px;
-}
-
-header p {
-    margin: 0;
-    font-size: 18px;
+.dashboard {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "sidebar header"
+        "sidebar main"
+        "footer  footer";
+    min-height: 100vh;
 }
 
 
 /* =========================================
-   NAVIGATION
+   SIDEBAR (Flexbox for internal layout)
    ========================================= */
 
-nav {
+.sidebar {
+    grid-area: sidebar;
     background-color: var(--color-primary-dark);
-    padding: 15px;
-    text-align: center;
+    color: var(--color-white);
+    padding: 24px 18px;
 
-    max-width: 1100px;
-    margin: 12px auto 0;
-    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
 }
 
-nav a {
-    color: var(--color-white);
-    text-decoration: none;
-    margin: 0 15px;
+.sidebar__brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--font-heading);
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+.sidebar__brand img {
+    display: block;
+}
+
+.sidebar__nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar__link {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar__link:hover,
+.sidebar__link:focus-visible {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+}
+
+.sidebar__link--active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+
+/* =========================================
+   HEADER (top bar, Flexbox)
+   ========================================= */
+
+.header {
+    grid-area: header;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 22px 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__title h1 {
+    margin: 0 0 4px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 26px;
     letter-spacing: 0.3px;
 }
 
-nav a:hover {
-    text-decoration: underline;
+.header__title p {
+    margin: 0;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 
@@ -111,10 +160,12 @@ nav a:hover {
    MAIN CONTENT
    ========================================= */
 
-main {
+.main {
+    grid-area: main;
     max-width: 1100px;
-    margin: 30px auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    width: 100%;
 }
 
 section {
@@ -126,6 +177,89 @@ h2 {
     font-weight: 600;
     letter-spacing: 0.3px;
     margin-top: 0;
+}
+
+
+/* =========================================
+   OVERVIEW CARDS (CSS Grid + Flexbox)
+   ========================================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.card:hover,
+.card:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(27, 94, 32, 0.15);
+    outline: none;
+}
+
+.card__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card__label {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.card__amount {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--color-primary-dark);
+}
+
+.card__meta {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.82rem;
+}
+
+.card__tag {
+    font-size: 0.72rem;
+    color: var(--color-text-light);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    padding: 3px 10px;
+}
+
+.card__tag--fixed {
+    color: var(--color-primary-dark);
+    background-color: var(--color-primary-pale);
+    border-color: var(--color-primary-light);
+}
+
+.card__tag--good {
+    color: #2f7a4a;
+    background-color: var(--color-primary-pale);
+    border-color: var(--color-primary-light);
+}
+
+.card--savings .card__amount {
+    color: var(--color-accent);
 }
 
 
@@ -323,33 +457,71 @@ summary:hover {
    FOOTER
    ========================================= */
 
-footer {
+.footer {
+    grid-area: footer;
     background-color: var(--color-primary-dark);
     color: var(--color-white);
     text-align: center;
     padding: 20px;
-    margin-top: 30px;
     font-family: var(--font-body);
 }
 
-footer p {
+.footer p {
     margin: 0;
 }
 
 
 /* =========================================
-   RESPONSIVE DESIGN
+   RESPONSIVE: collapse dashboard shell
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "sidebar"
+            "header"
+            "main"
+            "footer";
+    }
+
+    .sidebar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+    }
+
+    .sidebar__nav {
+        flex-direction: row;
+        gap: 2px;
+        overflow-x: auto;
+    }
+
+    .sidebar__link {
+        white-space: nowrap;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        padding: 18px 20px;
+    }
+}
+
+
+/* =========================================
+   EXISTING CONTENT RESPONSIVE RULES
    ========================================= */
 
 @media (max-width: 700px) {
 
-    header h1 {
-        font-size: 25px;
-    }
-
-    nav a {
-        display: block;
-        margin: 8px 0;
+    .header__title h1 {
+        font-size: 22px;
     }
 
     .expenses {
@@ -415,5 +587,31 @@ footer p {
 
     .expenses tbody td:last-child {
         border-bottom: none;
+    }
+}
+
+
+/* =========================================
+   STRETCH GOAL: DARK THEME
+   ========================================= */
+
+@media (prefers-color-scheme: dark) {
+
+    :root {
+        --color-primary: #4caf50;
+        --color-primary-dark: #0f2e12;
+        --color-primary-light: #81c784;
+        --color-primary-pale: #17301a;
+        --color-accent-row: #1f3b23;
+        --color-warning: #ef5350;
+
+        --color-accent: #ffca4a;
+        --color-accent-pale: #3a2f10;
+
+        --color-text: #e9e9ec;
+        --color-text-light: #a6ada9;
+        --color-bg: #10141a;
+        --color-white: #1a2020;
+        --color-border: #2b3330;
     }
 }

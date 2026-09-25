@@ -8,6 +8,8 @@ This project was originally started in Week 1 and was expanded in Week 2 by addi
 
 In Week 3, the project was visually redesigned using an intentional color palette, custom Google Fonts typography, refined table and form styling, and the CSS Box Model, transforming it from a functional page into a polished, professional-looking application.
 
+In Week 4, the page was rebuilt into a true dashboard shell using CSS Grid and Flexbox, with a sidebar, a top header bar, six spending-category overview cards, a responsive breakpoint, and card micro-interactions — while keeping all existing content (the expense form, expense table, "How to Use" section, and budgeting video) intact.
+
 ## Features
 
 ### 1. Expense Table
@@ -53,20 +55,13 @@ JavaScript functionality will be added in a later week.
 
 ### 3. Multimedia Content
 
-A logo image has been added near the main heading using the `<img>` element with:
-
-* `src`
-* `alt`
-* `width`
+A logo image is used both in the sidebar brand mark and, previously, near the main heading, via the `<img>` element with `src`, `alt`, and `width`.
 
 A YouTube budgeting video has also been embedded using an `<iframe>`.
 
 ### 4. Interactive Elements
 
-A collapsible "How to use this tracker" section was created using:
-
-* `<details>`
-* `<summary>`
+A collapsible "How to use this tracker" section was created using `<details>` and `<summary>`.
 
 The expense table also includes a hover effect that changes the appearance of table rows when the user moves the mouse over them.
 
@@ -84,33 +79,32 @@ The project demonstrates several advanced CSS selectors, including:
 * `:hover`
 * `:required`
 * `:active`
-
-These selectors are used to improve the appearance and interactivity of the page.
+* `:focus-visible` (added in Week 4, for keyboard-accessible card interactions)
 
 ### 6. Semantic HTML
 
 The project uses semantic HTML elements to give the page meaningful structure:
 
-* `<header>` - Contains the main heading and logo.
-* `<nav>` - Contains navigation links.
-* `<main>` - Contains the main page content.
+* `<nav>` - The sidebar navigation.
+* `<header>` - The top bar containing the page title.
+* `<main>` - Contains the main dashboard content.
 * `<section>` - Organizes different parts of the tracker.
 * `<footer>` - Contains copyright information.
 
 ### 7. Visual Identity & Design System (Week 3)
 
-Week 3 focused entirely on transforming SpendWise's visual design using CSS. No new HTML structure or functionality was added — only styling improvements to the existing markup.
+Week 3 focused entirely on transforming SpendWise's visual design using CSS.
 
 #### Color Palette
 
 A cohesive green-based color palette was implemented using CSS custom properties (`:root` variables) so that colors stay consistent and easy to update across the entire site:
 
-* `--color-primary: #2e7d32` — main brand green, used for the header, nav, table headers, and buttons.
-* `--color-primary-dark: #1b5e20` — used for hover states, nav background, and the footer.
+* `--color-primary: #2e7d32` — main brand green, used for the header, sidebar active link, table headers, and buttons.
+* `--color-primary-dark: #1b5e20` — used for hover states, the sidebar background, and the footer.
 * `--color-primary-light: #81c784` — used for input focus outlines and required-field indicators.
-* `--color-primary-pale: #e8f5e9` — used as a soft background for the Add Expense card.
+* `--color-primary-pale: #e8f5e9` — used as a soft background for the Add Expense card and card tags.
 * `--color-accent-row: #c8e6c9` — used for the table row hover effect.
-* `--color-text`, `--color-bg`, `--color-white`, `--color-border` — neutral tones for text, page background, cards, and borders.
+* `--color-text`, `--color-text-light`, `--color-bg`, `--color-white`, `--color-border` — neutral tones for text, page background, cards, and borders.
 
 Green was chosen because it reinforces the app's theme of financial growth, savings, and trust.
 
@@ -118,10 +112,8 @@ Green was chosen because it reinforces the app's theme of financial growth, savi
 
 Custom typography was added using [Google Fonts](https://fonts.google.com/):
 
-* **Poppins** (weights 600/700) is used for headings, the nav links, table header text, and buttons, giving the interface a strong, confident personality.
+* **Poppins** (weights 600/700) is used for headings, sidebar links, card labels/amounts, table header text, and buttons, giving the interface a strong, confident personality.
 * **Inter** (weights 400/500/600) is used for body text, labels, and paragraph content, prioritizing readability.
-
-This font pairing creates a clear visual hierarchy between prominent interface text and everyday reading content.
 
 #### Table and Form Styling
 
@@ -135,18 +127,44 @@ This font pairing creates a clear visual hierarchy between prominent interface t
 
 #### CSS Box Model
 
-Margin, padding, border-radius, and box-shadow were used intentionally to turn the header, Add Expense form, expense table, "How to Use" section, and video section into distinct, separated visual "cards" with consistent spacing — replacing the previous edge-to-edge banner-style header with a rounded, shadowed card that matches the rest of the page.
+Margin, padding, border-radius, and box-shadow were used intentionally to turn the Add Expense form, expense table, "How to Use" section, and video section into distinct, separated visual "cards" with consistent spacing.
+
+### 8. Dashboard Shell (Week 4)
+
+Week 4 restructured the page into a dashboard layout without changing any of the existing content.
+
+#### Layout: CSS Grid + Flexbox
+
+* **CSS Grid** defines the overall page shell: a `.dashboard` grid with `grid-template-areas` for a sidebar, a header row, a main content row, and a full-width footer row. No absolute positioning is used for the layout.
+* **Flexbox** handles every smaller arrangement: the sidebar's stacked brand + nav links, the header's title alignment, and each overview card's internal label/amount/meta stack.
+* Six new **overview cards** (Rent, Food, Transport, Utilities, Entertainment, Savings) were added in a `display: grid` card row, each showing a realistic static amount, a budget or status tag, and a short meta line.
+
+#### New Theme Variable
+
+* `--color-accent: #f9a825` — a warm amber accent, distinct from the brand green, used for the Savings card amount and "on track" status tags, so goal-related information stands out from routine spending.
+
+#### Responsive Design
+
+* A new `max-width: 768px` media query collapses the dashboard grid into a single column (sidebar on top, then header, then main, then footer) and turns the sidebar's vertical nav into a horizontal, scrollable row. This is in addition to the existing 700px/600px breakpoints from Week 3, which still handle the table and form's mobile behavior.
+
+#### Micro-interactions
+
+* Each overview card lifts slightly and gains a soft shadow on `:hover` and `:focus-visible`, using a 200ms `transform` + `box-shadow` transition, so keyboard users get the same feedback as mouse users.
+
+#### Dark Theme (Stretch Goal)
+
+* A `@media (prefers-color-scheme: dark)` block overrides only the `:root` color variables — no other CSS was changed — so the whole dashboard, including the sidebar, cards, form, and table, re-themes automatically for users with a dark system preference.
 
 ## Technologies Used
 
 * HTML5
-* CSS3
+* CSS3 (Grid, Flexbox, custom properties)
 * Google Fonts (Poppins, Inter)
 
 ## Project Structure
 
 ```text
-SpendWise/
+budget-tracker/
 │
 ├── index.html
 ├── style.css
@@ -178,6 +196,19 @@ During Week 3, I learned how to:
 * Apply `box-shadow` to give sections depth and separation from the page background.
 * Recognize the difference between a webpage that "works" and one that feels professional.
 
+During Week 4, I learned how to:
+
+* Structure a full page layout using CSS Grid `grid-template-areas`, instead of stacking everything in Normal Flow.
+* Use Flexbox for smaller, internal arrangements (sidebar nav, header, card contents) while Grid handles the overall page structure.
+* Build a responsive dashboard that collapses cleanly into a single column below 768px, including turning a vertical sidebar into a horizontal scrollable nav.
+* Add accessible hover **and** keyboard-focus micro-interactions using `transform`, `box-shadow`, and `:focus-visible`.
+* Implement a full dark theme by overriding only `:root` custom properties inside a `prefers-color-scheme` media query.
+* Merge a new layout into an existing project without breaking or duplicating previously built content.
+
+## What was hardest
+
+Getting the sidebar and overview card grid to collapse cleanly at 768px, on top of the existing 700px/600px breakpoints from Week 3, took the most care — making sure the new dashboard-shell breakpoint and the older content-specific breakpoints didn't conflict, and that the sidebar became a usable horizontal nav on small screens instead of just shrinking in place.
+
 ## Future Improvements
 
 In future weeks, I plan to add JavaScript functionality so that users can:
@@ -187,10 +218,11 @@ In future weeks, I plan to add JavaScript functionality so that users can:
 * Calculate total expenses.
 * Filter expenses by category.
 * Store and manage expense data.
+* Connect the overview cards to real calculated totals instead of static figures.
 
 ## Author
 
-Created as part of the PLP Week 3 Web Development learning journey.
+Created as part of the PLP Web Development learning journey.
 
 ## License
 
