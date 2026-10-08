@@ -615,3 +615,64 @@ summary:hover {
         --color-border: #2b3330;
     }
 }
+
+/* ============================================
+   WEEK 6 - JAVASCRIPT BUDGET SUMMARY
+   ============================================ */
+
+.budget-results {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.budget-results h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.budget-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.budget-summary div {
+    background: var(--color-primary-pale);
+    padding: 18px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.budget-summary span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.budget-summary strong {
+    font-size: 24px;
+    color: var(--color-primary);
+}
+
+.budget-results p {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+/* Responsive budget summary */
+
+@media (max-width: 900px) {
+    .budget-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .budget-summary {
+        grid-template-columns: 1fr;
+    }
+}

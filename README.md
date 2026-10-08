@@ -1,18 +1,24 @@
-# budget-tracker - Personal Budget & Expense Tracker
+# SpendWise - Personal Budget & Expense Tracker
 
 ## Project Overview
 
-SpendWise is a simple Personal Budget & Expense Tracker built using HTML and CSS. The project helps users organize and view their expenses in one place.
+SpendWise is a Personal Budget & Expense Tracker designed to help users organize, manage, and understand their spending in one place.
 
-This project was originally started in Week 1 and was expanded in Week 2 by adding structured expense data, an improved expense form, multimedia content, interactive elements, semantic HTML, and advanced CSS selectors.
+The project was developed progressively through the PLP Software Development training program.
 
-In Week 3, the project was visually redesigned using an intentional color palette, custom Google Fonts typography, refined table and form styling, and the CSS Box Model, transforming it from a functional page into a polished, professional-looking application.
+The project started in Week 1 with the basic HTML structure. In Week 2, structured expense data, an improved expense form, multimedia content, interactive elements, and semantic HTML were added.
 
-In Week 4, the page was rebuilt into a true dashboard shell using CSS Grid and Flexbox, with a sidebar, a top header bar, six spending-category overview cards, a responsive breakpoint, and card micro-interactions — while keeping all existing content (the expense form, expense table, "How to Use" section, and budgeting video) intact.
+In Week 3, the project was visually redesigned using an intentional green-based color palette, custom Google Fonts typography, refined table and form styling, and the CSS Box Model.
 
-## Features
+In Week 4, the project was rebuilt into a responsive dashboard using CSS Grid and Flexbox, with a sidebar, top header, overview cards, responsive breakpoints, and card micro-interactions.
 
-### 1. Expense Table
+In Week 6, JavaScript was introduced to transform SpendWise from a primarily visual application into an application that can collect user input, store data, perform calculations, and display budget results.
+
+---
+
+# Features
+
+## 1. Expense Table
 
 The project includes a structured HTML expense table containing:
 
@@ -30,9 +36,11 @@ The table uses semantic table elements including:
 * `<th>`
 * `<td>`
 
-It also includes five sample expense records.
+The table also includes sample expense records.
 
-### 2. Add Expense Form
+---
+
+## 2. Add Expense Form
 
 The Add Expense section contains a form where users can enter:
 
@@ -41,7 +49,7 @@ The Add Expense section contains a form where users can enter:
 * Expense category
 * Expense date
 
-The category field uses a dropdown with five options:
+The category field includes:
 
 * Food
 * Transport
@@ -51,129 +59,578 @@ The category field uses a dropdown with five options:
 
 The form also includes an "Add Expense" button.
 
-JavaScript functionality will be added in a later week.
+The project now also uses JavaScript to collect budgeting information using browser prompts and process expense amounts.
 
-### 3. Multimedia Content
+---
 
-A logo image is used both in the sidebar brand mark and, previously, near the main heading, via the `<img>` element with `src`, `alt`, and `width`.
+## 3. Multimedia Content
+
+A logo image is used in the sidebar brand area.
 
 A YouTube budgeting video has also been embedded using an `<iframe>`.
 
-### 4. Interactive Elements
+---
 
-A collapsible "How to use this tracker" section was created using `<details>` and `<summary>`.
+## 4. Interactive Elements
 
-The expense table also includes a hover effect that changes the appearance of table rows when the user moves the mouse over them.
+A collapsible "How to use this tracker" section was created using:
+
+* `<details>`
+* `<summary>`
+
+The expense table also includes hover effects.
 
 The Add Expense button uses `cursor: pointer` to indicate that it can be clicked.
 
-### 5. Advanced CSS Selectors
+JavaScript prompts are used to collect budget and expense information from the user.
 
-The project demonstrates several advanced CSS selectors, including:
+---
 
-* Descendant selectors
-* `:nth-child(even)`
-* `:first-child`
-* `:not()`
-* `:focus`
-* `:hover`
-* `:required`
-* `:active`
-* `:focus-visible` (added in Week 4, for keyboard-accessible card interactions)
+# JavaScript Foundation - Week 6
 
-### 6. Semantic HTML
+## 5. JavaScript Setup
 
-The project uses semantic HTML elements to give the page meaningful structure:
+A separate JavaScript file called `script.js` was created for the Week 6 assignment.
 
-* `<nav>` - The sidebar navigation.
-* `<header>` - The top bar containing the page title.
-* `<main>` - Contains the main dashboard content.
-* `<section>` - Organizes different parts of the tracker.
-* `<footer>` - Contains copyright information.
+The JavaScript file is linked to `index.html` using:
 
-### 7. Visual Identity & Design System (Week 3)
+```html
+<script src="script.js"></script>
+```
 
-Week 3 focused entirely on transforming SpendWise's visual design using CSS.
+This allows JavaScript code to run when the SpendWise webpage loads.
 
-#### Color Palette
+---
 
-A cohesive green-based color palette was implemented using CSS custom properties (`:root` variables) so that colors stay consistent and easy to update across the entire site:
+## 6. JavaScript Concepts Implemented
 
-* `--color-primary: #2e7d32` — main brand green, used for the header, sidebar active link, table headers, and buttons.
-* `--color-primary-dark: #1b5e20` — used for hover states, the sidebar background, and the footer.
-* `--color-primary-light: #81c784` — used for input focus outlines and required-field indicators.
-* `--color-primary-pale: #e8f5e9` — used as a soft background for the Add Expense card and card tags.
-* `--color-accent-row: #c8e6c9` — used for the table row hover effect.
-* `--color-text`, `--color-text-light`, `--color-bg`, `--color-white`, `--color-border` — neutral tones for text, page background, cards, and borders.
+The following JavaScript concepts are implemented in SpendWise:
 
-Green was chosen because it reinforces the app's theme of financial growth, savings, and trust.
+* Variables
+* Data types
+* Arrays
+* User input
+* Type conversion
+* Functions
+* Loops
+* Conditional statements
+* Arithmetic calculations
+* Browser console output
+* DOM manipulation
 
-#### Typography
+---
 
-Custom typography was added using [Google Fonts](https://fonts.google.com/):
+## 7. Variables
 
-* **Poppins** (weights 600/700) is used for headings, sidebar links, card labels/amounts, table header text, and buttons, giving the interface a strong, confident personality.
-* **Inter** (weights 400/500/600) is used for body text, labels, and paragraph content, prioritizing readability.
+Variables are used to store important budgeting information.
 
-#### Table and Form Styling
+For example:
 
-* Table cells and form inputs use consistent padding for comfortable spacing.
-* The table header (`<thead>`) is styled with the primary green background and bold heading font.
-* Table rows alternate background color using `:nth-child(even)` for easier scanning.
-* Table rows highlight on `:hover` to show interactivity.
-* Form inputs and the dropdown share consistent padding, borders, border-radius, and font styling.
-* Inputs display a green outline and background tint on `:focus`, and a colored left border on `:required` fields.
-* The "Add Expense" button uses the primary color, rounded corners, a hover state, and a subtle `:active` press effect.
+```javascript
+let budget = 0;
+let expenses = [];
+let totalExpenses = 0;
+let remainingBalance = 0;
+```
 
-#### CSS Box Model
+### Budget
 
-Margin, padding, border-radius, and box-shadow were used intentionally to turn the Add Expense form, expense table, "How to Use" section, and video section into distinct, separated visual "cards" with consistent spacing.
+The `budget` variable stores the monthly budget entered by the user.
 
-### 8. Dashboard Shell (Week 4)
+### Expenses
 
-Week 4 restructured the page into a dashboard layout without changing any of the existing content.
+The `expenses` variable is an array used to store multiple expense amounts.
 
-#### Layout: CSS Grid + Flexbox
+### Total Expenses
 
-* **CSS Grid** defines the overall page shell: a `.dashboard` grid with `grid-template-areas` for a sidebar, a header row, a main content row, and a full-width footer row. No absolute positioning is used for the layout.
-* **Flexbox** handles every smaller arrangement: the sidebar's stacked brand + nav links, the header's title alignment, and each overview card's internal label/amount/meta stack.
-* Six new **overview cards** (Rent, Food, Transport, Utilities, Entertainment, Savings) were added in a `display: grid` card row, each showing a realistic static amount, a budget or status tag, and a short meta line.
+The `totalExpenses` variable stores the calculated total amount spent.
 
-#### New Theme Variable
+### Remaining Balance
 
-* `--color-accent: #f9a825` — a warm amber accent, distinct from the brand green, used for the Savings card amount and "on track" status tags, so goal-related information stands out from routine spending.
+The `remainingBalance` variable stores the amount left after subtracting expenses from the budget.
 
-#### Responsive Design
+---
 
-* A new `max-width: 768px` media query collapses the dashboard grid into a single column (sidebar on top, then header, then main, then footer) and turns the sidebar's vertical nav into a horizontal, scrollable row. This is in addition to the existing 700px/600px breakpoints from Week 3, which still handle the table and form's mobile behavior.
+## 8. Data Types
 
-#### Micro-interactions
+Different JavaScript data types are used in the application.
 
-* Each overview card lifts slightly and gains a soft shadow on `:hover` and `:focus-visible`, using a 200ms `transform` + `box-shadow` transition, so keyboard users get the same feedback as mouse users.
+### Number
 
-#### Dark Theme (Stretch Goal)
+Numbers are used for budget and expense amounts:
 
-* A `@media (prefers-color-scheme: dark)` block overrides only the `:root` color variables — no other CSS was changed — so the whole dashboard, including the sidebar, cards, form, and table, re-themes automatically for users with a dark system preference.
+```javascript
+let budget = 0;
+let totalExpenses = 0;
+```
 
-## Technologies Used
+### String
 
-* HTML5
-* CSS3 (Grid, Flexbox, custom properties)
-* Google Fonts (Poppins, Inter)
+Strings are used for messages and user input:
 
-## Project Structure
+```javascript
+let addAnother = "yes";
+```
+
+### Array
+
+An array stores multiple expense amounts:
+
+```javascript
+let expenses = [];
+```
+
+---
+
+## 9. Collecting User Input
+
+SpendWise collects user input using the JavaScript `prompt()` function.
+
+The application asks the user for their monthly budget:
+
+```javascript
+let budgetInput = prompt(
+    "Welcome to SpendWise!\n\n" +
+    "Enter your monthly budget:"
+);
+```
+
+The application also asks the user to enter expense amounts:
+
+```javascript
+let expenseInput = prompt(
+    "Enter an expense amount."
+);
+```
+
+Because values returned by `prompt()` are strings, the input is converted to a number using:
+
+```javascript
+Number(expenseInput);
+```
+
+This allows the application to perform mathematical calculations.
+
+---
+
+## 10. Budget Calculations
+
+SpendWise calculates the total expenses using a reusable function:
+
+```javascript
+function calculateTotalExpenses(expenseList) {
+    let total = 0;
+
+    for (let i = 0; i < expenseList.length; i++) {
+        total += expenseList[i];
+    }
+
+    return total;
+}
+```
+
+The function loops through the expense array and adds all expense amounts together.
+
+---
+
+## 11. Remaining Balance
+
+The remaining balance is calculated using a separate reusable function:
+
+```javascript
+function calculateRemainingBalance(
+    budgetAmount,
+    expenseAmount
+) {
+    return budgetAmount - expenseAmount;
+}
+```
+
+The calculation is:
 
 ```text
-budget-tracker/
+Remaining Balance = Budget - Total Expenses
+```
+
+For example:
+
+```text
+Budget = $1,000
+Total Expenses = $650
+
+Remaining Balance = $1,000 - $650
+
+Remaining Balance = $350
+```
+
+---
+
+## 12. Reusable Functions
+
+Functions help organize the JavaScript code into smaller reusable sections.
+
+The main functions used in SpendWise are:
+
+### `calculateTotalExpenses()`
+
+Calculates the total amount spent.
+
+### `calculateRemainingBalance()`
+
+Calculates the amount remaining after expenses.
+
+### `getBudgetInformation()`
+
+Collects the monthly budget from the user.
+
+### `getExpenseInformation()`
+
+Collects expense amounts from the user.
+
+### `calculateBudgetSummary()`
+
+Calculates the total expenses and remaining balance.
+
+### `displayResults()`
+
+Displays the calculated results in the browser console.
+
+### `displayResultsOnPage()`
+
+Displays the budget summary on the webpage.
+
+### `startSpendWise()`
+
+Starts the SpendWise JavaScript application.
+
+---
+
+## 13. Loops
+
+A `for` loop is used to process all expenses stored in the expenses array.
+
+Example:
+
+```javascript
+for (let i = 0; i < expenseList.length; i++) {
+    total += expenseList[i];
+}
+```
+
+The loop goes through each expense and adds it to the total.
+
+---
+
+## 14. Conditional Statements
+
+Conditional statements are used to determine the user's budget status.
+
+For example:
+
+```javascript
+if (remainingBalance > 0) {
+    console.log("Status: You are within your budget.");
+} else if (remainingBalance === 0) {
+    console.log("Status: You have used your entire budget.");
+} else {
+    console.log("Status: You have exceeded your budget.");
+}
+```
+
+This allows SpendWise to give the user useful feedback based on their spending.
+
+---
+
+## 15. Displaying Results in the Browser Console
+
+The assignment requires calculated results to be displayed in the browser console.
+
+SpendWise displays clearly labelled information such as:
+
+```text
+------------------------------------
+        SPENDWISE BUDGET SUMMARY
+------------------------------------
+Monthly Budget: $1000.00
+Total Expenses: $650.00
+Remaining Balance: $350.00
+Number of Expenses: 3
+Status: You are within your budget.
+------------------------------------
+```
+
+The browser console can be opened using the browser developer tools.
+
+---
+
+## 16. Displaying Results on the Webpage
+
+In addition to the browser console, SpendWise dynamically creates a budget summary section on the webpage.
+
+The summary displays:
+
+* Monthly Budget
+* Total Expenses
+* Remaining Balance
+* Number of Expenses
+* Budget status
+
+JavaScript DOM manipulation is used to create and display this information.
+
+---
+
+# How SpendWise Works
+
+When the webpage loads:
+
+1. JavaScript starts running.
+2. The user is asked to enter their monthly budget.
+3. The user enters expense amounts.
+4. Expense amounts are stored in an array.
+5. The application calculates the total expenses.
+6. The application calculates the remaining balance.
+7. The results are displayed in the browser console.
+8. The results are also displayed on the webpage.
+
+---
+
+# Example Calculation
+
+If the user enters:
+
+```text
+Monthly Budget: $1000
+
+Expenses:
+Food: $200
+Transport: $100
+Rent: $400
+```
+
+The application calculates:
+
+```text
+Total Expenses = $700
+
+Remaining Balance = $1000 - $700
+
+Remaining Balance = $300
+```
+
+The console displays:
+
+```text
+Monthly Budget: $1000.00
+Total Expenses: $700.00
+Remaining Balance: $300.00
+Number of Expenses: 3
+Status: You are within your budget.
+```
+
+---
+
+# Testing
+
+The application was tested using different budget and expense values.
+
+## Test 1 - Within Budget
+
+```text
+Budget: $1000
+Expenses: $300
+
+Remaining Balance: $700
+```
+
+Expected result:
+
+```text
+You are within your budget.
+```
+
+---
+
+## Test 2 - Entire Budget Used
+
+```text
+Budget: $500
+Expenses: $500
+
+Remaining Balance: $0
+```
+
+Expected result:
+
+```text
+You have used your entire budget.
+```
+
+---
+
+## Test 3 - Budget Exceeded
+
+```text
+Budget: $500
+Expenses: $650
+
+Remaining Balance: -$150
+```
+
+Expected result:
+
+```text
+You have exceeded your budget.
+```
+
+---
+
+# Previous Development Weeks
+
+## Week 1 - HTML Foundation
+
+The initial SpendWise structure was created using HTML5.
+
+---
+
+## Week 2 - HTML Structure and Content
+
+The project was improved by adding:
+
+* Structured expense tables
+* HTML forms
+* Select and option elements
+* Images
+* YouTube video
+* Interactive elements
+* Semantic HTML
+* Advanced CSS selectors
+
+---
+
+## Week 3 - CSS Styling
+
+The visual design was improved using:
+
+* CSS custom properties
+* Green colour palette
+* Google Fonts
+* Poppins and Inter typography
+* Table styling
+* Form styling
+* CSS Box Model
+* Padding and margins
+* Borders
+* Border radius
+* Box shadows
+* Responsive design
+
+---
+
+## Week 4 - Dashboard Layout
+
+The page was transformed into a dashboard using:
+
+* CSS Grid
+* Flexbox
+* Sidebar navigation
+* Header
+* Overview cards
+* Responsive layout
+* Micro-interactions
+* Keyboard focus styles
+* Dark theme support
+
+---
+
+## Week 6 - JavaScript Foundation
+
+JavaScript was introduced to make SpendWise capable of processing budgeting data.
+
+The application now demonstrates:
+
+* Variables
+* Data types
+* Arrays
+* User input
+* Type conversion
+* Functions
+* Loops
+* Conditional statements
+* Arithmetic calculations
+* Console output
+* DOM manipulation
+
+---
+
+# Technologies Used
+
+* HTML5
+* CSS3
+* JavaScript
+* CSS Grid
+* Flexbox
+* Google Fonts
+* Git
+* GitHub
+* VS Code
+* Ubuntu/Linux
+
+---
+
+# Project Structure
+
+```text
+plp-budget-tracker/
 │
 ├── index.html
 ├── style.css
-└── README.md
+├── script.js
+├── README.md
+│
+└── screenshots/
 ```
 
-## What I Learned
+---
 
-During Week 2, I learned how to:
+# How to Run the Project
+
+Clone the repository:
+
+```bash
+git clone https://github.com/abdikafimohamud/plp-budget-tracker.git
+```
+
+Enter the project:
+
+```bash
+cd plp-budget-tracker
+```
+
+Open the project in VS Code:
+
+```bash
+code .
+```
+
+Open `index.html` in a web browser.
+
+The project can also be run using the VS Code Live Server extension.
+
+---
+
+# GitHub Repository
+
+GitHub repository:
+
+https://github.com/abdikafimohamud/plp-budget-tracker
+
+---
+
+# What I Learned
+
+## Week 2
+
+I learned how to:
 
 * Create structured HTML tables.
 * Build and improve HTML forms.
@@ -183,47 +640,88 @@ During Week 2, I learned how to:
 * Use semantic HTML elements.
 * Apply advanced CSS selectors.
 * Use pseudo-classes such as `:hover`, `:focus`, and `:nth-child()`.
-* Improve the visual design and usability of a web page.
+* Improve the visual design and usability of a webpage.
 * Organize a project using HTML, CSS, and a README file.
 
-During Week 3, I learned how to:
+## Week 3
 
-* Build a cohesive color palette using CSS custom properties (`--variables`).
-* Import and apply Google Fonts, and pair a heading font with a body font.
-* Use `font-weight`, `letter-spacing`, and font pairing to build visual hierarchy.
-* Style tables and forms with intentional padding, borders, and consistent input styling.
-* Use the CSS Box Model (padding, margin, border, border-radius) to create distinct "card" sections.
-* Apply `box-shadow` to give sections depth and separation from the page background.
-* Recognize the difference between a webpage that "works" and one that feels professional.
+I learned how to:
 
-During Week 4, I learned how to:
+* Build a cohesive color palette using CSS custom properties.
+* Import and apply Google Fonts.
+* Pair heading and body fonts.
+* Use `font-weight` and `letter-spacing`.
+* Build visual hierarchy.
+* Style tables and forms.
+* Use the CSS Box Model.
+* Use `box-shadow` to create depth.
+* Create a more professional webpage design.
 
-* Structure a full page layout using CSS Grid `grid-template-areas`, instead of stacking everything in Normal Flow.
-* Use Flexbox for smaller, internal arrangements (sidebar nav, header, card contents) while Grid handles the overall page structure.
-* Build a responsive dashboard that collapses cleanly into a single column below 768px, including turning a vertical sidebar into a horizontal scrollable nav.
-* Add accessible hover **and** keyboard-focus micro-interactions using `transform`, `box-shadow`, and `:focus-visible`.
-* Implement a full dark theme by overriding only `:root` custom properties inside a `prefers-color-scheme` media query.
-* Merge a new layout into an existing project without breaking or duplicating previously built content.
+## Week 4
 
-## What was hardest
+I learned how to:
 
-Getting the sidebar and overview card grid to collapse cleanly at 768px, on top of the existing 700px/600px breakpoints from Week 3, took the most care — making sure the new dashboard-shell breakpoint and the older content-specific breakpoints didn't conflict, and that the sidebar became a usable horizontal nav on small screens instead of just shrinking in place.
+* Structure a full-page layout using CSS Grid.
+* Use `grid-template-areas`.
+* Use Flexbox for smaller internal arrangements.
+* Build a responsive dashboard.
+* Create a mobile-friendly sidebar.
+* Add hover and keyboard-focus interactions.
+* Implement a dark theme using CSS variables.
+* Merge a new layout into an existing project without breaking previous content.
 
-## Future Improvements
+## Week 6
 
-In future weeks, I plan to add JavaScript functionality so that users can:
+I learned how to:
 
-* Add new expenses dynamically.
+* Create and link a JavaScript file.
+* Declare and use variables.
+* Work with different JavaScript data types.
+* Store multiple values using arrays.
+* Collect user input using `prompt()`.
+* Convert user input from strings to numbers.
+* Perform arithmetic calculations.
+* Create reusable functions.
+* Use loops to process data.
+* Use conditional statements.
+* Display calculated information in the browser console.
+* Use JavaScript to dynamically display information on a webpage.
+
+---
+
+# What Was Hardest
+
+The most challenging part of Week 6 was connecting user input with the budget calculations.
+
+The application needed to collect values using `prompt()`, convert those values into numbers, store expense amounts in an array, calculate the total expenses, and then calculate the remaining balance.
+
+Organizing these tasks into reusable functions made the JavaScript easier to understand and maintain.
+
+---
+
+# Future Improvements
+
+In future weeks, I plan to add more advanced JavaScript functionality so that users can:
+
+* Add expenses directly through the webpage form.
 * Remove expenses.
-* Calculate total expenses.
+* Edit expenses.
+* Calculate category totals.
 * Filter expenses by category.
-* Store and manage expense data.
-* Connect the overview cards to real calculated totals instead of static figures.
+* Update overview cards dynamically.
+* Store expense data using local storage.
+* Create charts and spending visualizations.
+* Add monthly spending reports.
+* Connect the application to a backend database.
 
-## Author
+---
 
-Created as part of the PLP Web Development learning journey.
+# Author
 
-## License
+Created by **Abdikafi Mohamud** as part of the PLP Software Development learning journey.
+
+---
+
+# License
 
 This project is created for educational purposes.
